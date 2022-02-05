@@ -29,11 +29,14 @@ function App() {
   const handelText = (e) => setText(e.target.value);
    
   const handelRating = (x) => setRating(x); 
+  const handelEdit=(editedMovie)=>{
+    setMovie(movie.map(el=>el.id===editedMovie.id?{...el,...editedMovie}:el))
+  }
 
   return (
     <div className="App">
        <Search rating={rating} text={text} handelText={handelText} handelRating={handelRating}/>
-       <MovieList movie={movie.filter((el)=>el.name.toLowerCase().includes(text.toLowerCase()) && el.rating >= rating)} del={handelDelete}/>
+       <MovieList movie={movie.filter((el)=>el.name.toLowerCase().includes(text.toLowerCase()) && el.rating >= rating)} del={handelDelete} handelEdit={handelEdit}/>
        <AddMovie add={handelAdd}/>
     </div>
   );
