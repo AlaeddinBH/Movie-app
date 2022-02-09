@@ -4,7 +4,7 @@ export const moviesData = [
       image: "https://image.tmdb.org/t/p/w500/db32LaOibwEliAmSL2jjDF6oDdj.jpg",
       rating: 5,
       name: "Star Wars: The Rise Of Skywalker",
-      date: "December 2019",
+      date: "december 2019",
     },
     {
       id: Math.random(),

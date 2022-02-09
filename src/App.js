@@ -5,6 +5,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import MovieList from './components/MovieList';
 import Search from './components/Search';
 import AddMovie from './components/AddMovie';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Info from './components/Info';
 
 function App() {
   const [movie, setMovie] = useState(moviesData);
@@ -35,9 +37,20 @@ function App() {
 
   return (
     <div className="App">
-       <Search rating={rating} text={text} handelText={handelText} handelRating={handelRating}/>
-       <MovieList movie={movie.filter((el)=>el.name.toLowerCase().includes(text.toLowerCase()) && el.rating >= rating)} del={handelDelete} handelEdit={handelEdit}/>
-       <AddMovie add={handelAdd}/>
+      <Router>
+          <Search rating={rating} text={text} handelText={handelText} handelRating={handelRating}/>
+        <Routes>
+         
+          <Route path="/" element={ <div>
+          <MovieList movie={movie.filter((el)=>el.name.toLowerCase().includes(text.toLowerCase()) && el.rating >= rating)} del={handelDelete} handelEdit={handelEdit}/>
+          <AddMovie add={handelAdd}/>
+          </div>} />
+          <Route path="/Info/:id" element={<Info movie={movie}/>} />
+          
+          
+          </Routes>
+         
+      </Router>
     </div>
   );
 }

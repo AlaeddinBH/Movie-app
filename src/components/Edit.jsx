@@ -50,7 +50,7 @@ const Edit = ({movie,handelEdit}) => {
   return (
     <div>
       <button className="add-movie-btn" onClick={openModal}>
-        Add Movie
+        Edit
       </button>
       <Modal
         isOpen={modalIsOpen}
